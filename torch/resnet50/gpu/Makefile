@@ -20,3 +20,10 @@ build: build-docker-context
 	$(MAKE) clear-docker-context
 
 
+publish: build
+	@echo "Publishing app" && \
+	docker tag ${APP_IMAGE_NAME}:$(TAG) ${DOCKER_REGISTRY}/$(DOCKER_REPO_NAME):$(TAG) && \
+	docker tag ${APP_IMAGE_NAME}:$(TAG) ${DOCKER_REGISTRY}/$(DOCKER_REPO_NAME):latest && \
+	docker push ${DOCKER_REGISTRY}/${APP_IMAGE_NAME}:$(TAG) && \
+	docker push ${DOCKER_REGISTRY}/${APP_IMAGE_NAME}:latest && \
+	echo "Published ${DOCKER_REGISTRY}/${APP_IMAGE_NAME}:$(TAG) successfully"
