@@ -1,4 +1,4 @@
-FROM dustynv/tensorflow2:r36.2.0
+FROM dustynv/l4t-pytorch:r36.2.0
 
 WORKDIR /app
 
